@@ -1,0 +1,752 @@
+/* ==========================================================================
+   VitPress - Captador de Leads Conversacional (CSS)
+   Design System & Total Theme Isolation / Resets
+   ========================================================================== */
+
+:root {
+	--hub-col-primary: #1b4d3e;
+	--hub-col-primary-dark: #12352a;
+	--hub-col-user-bubble: #d9fdd3;
+	--hub-col-bot-bubble: #ffffff;
+	--hub-col-bg: #f0f2f5;
+	--hub-col-text: #111b21;
+	--hub-col-muted: #667781;
+	--hub-col-online: #25d366;
+}
+
+/* --------------------------------------------------------------------------
+   ISOLATION RESET (Impede que o CSS do tema ou plugins afete o captador)
+   -------------------------------------------------------------------------- */
+#hub-lead-collector-root,
+#hub-lead-collector-root *,
+#hub-lead-collector-root *::before,
+#hub-lead-collector-root *::after {
+	box-sizing: border-box !important;
+	letter-spacing: normal !important;
+	text-transform: none !important;
+	text-shadow: none !important;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+	-webkit-font-smoothing: antialiased !important;
+	-moz-osx-font-smoothing: grayscale !important;
+}
+
+#hub-lead-collector-root {
+	position: fixed !important;
+	bottom: 24px !important;
+	z-index: 999999 !important;
+	font-size: 14px !important;
+	line-height: 1.4 !important;
+	display: block !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: none !important;
+	background: none !important;
+	box-shadow: none !important;
+	max-width: none !important;
+	width: auto !important;
+	height: auto !important;
+}
+
+#hub-lead-collector-root.position-right {
+	right: 24px !important;
+	left: auto !important;
+}
+
+#hub-lead-collector-root.position-left {
+	left: 24px !important;
+	right: auto !important;
+}
+
+/* Reset Geral de Botões e Entradas dentro do Captador */
+#hub-lead-collector-root button,
+#hub-lead-collector-root input,
+#hub-lead-collector-root textarea {
+	font-family: inherit !important;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
+	border-radius: 0;
+	background: none;
+	border: none;
+	outline: none !important;
+	box-shadow: none !important;
+	padding: 0;
+	margin: 0;
+}
+
+#hub-lead-collector-root button {
+	cursor: pointer !important;
+	user-select: none !important;
+	text-decoration: none !important;
+}
+
+#hub-lead-collector-root button:focus,
+#hub-lead-collector-root button:active,
+#hub-lead-collector-root button:hover {
+	outline: none !important;
+	text-decoration: none !important;
+}
+
+/* ==========================================================================
+   1. Botão Flutuante (Launcher) & Callout
+   ========================================================================== */
+#hub-lead-collector-root .hub-collector-launcher-wrap {
+	display: flex !important;
+	align-items: center !important;
+	gap: 12px !important;
+	cursor: pointer !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	position: relative !important;
+}
+
+#hub-lead-collector-root .hub-collector-launcher {
+	width: 60px !important;
+	min-width: 60px !important;
+	max-width: 60px !important;
+	height: 60px !important;
+	min-height: 60px !important;
+	max-height: 60px !important;
+	border-radius: 50% !important;
+	background: var(--hub-col-primary) !important;
+	background-color: var(--hub-col-primary) !important;
+	background-image: none !important;
+	color: #ffffff !important;
+	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22) !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	position: relative !important;
+	transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease !important;
+	border: none !important;
+	outline: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	cursor: pointer !important;
+	overflow: visible !important;
+}
+
+#hub-lead-collector-root .hub-collector-launcher:hover {
+	transform: scale(1.08) !important;
+	box-shadow: 0 6px 22px rgba(0, 0, 0, 0.3) !important;
+	background-color: var(--hub-col-primary) !important;
+}
+
+#hub-lead-collector-root .hub-collector-launcher-avatar {
+	width: 100% !important;
+	height: 100% !important;
+	border-radius: 50% !important;
+	object-fit: cover !important;
+	display: block !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-launcher-icon {
+	width: 28px !important;
+	height: 28px !important;
+	fill: currentColor !important;
+	display: block !important;
+}
+
+/* Badge de Notificação '1' */
+#hub-lead-collector-root .hub-collector-badge {
+	position: absolute !important;
+	top: -2px !important;
+	right: -2px !important;
+	background-color: #e53935 !important;
+	color: #ffffff !important;
+	font-size: 11px !important;
+	font-weight: 700 !important;
+	width: 20px !important;
+	min-width: 20px !important;
+	max-width: 20px !important;
+	height: 20px !important;
+	min-height: 20px !important;
+	max-height: 20px !important;
+	border-radius: 50% !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	border: 2px solid #ffffff !important;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+	line-height: 1 !important;
+	animation: hubBadgePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+	z-index: 999999 !important;
+	pointer-events: none !important;
+}
+
+@keyframes hubBadgePop {
+	0% { transform: scale(0); opacity: 0; }
+	70% { transform: scale(1.25); }
+	100% { transform: scale(1); opacity: 1; }
+}
+
+/* Callout Bubble (Vamos conversar?) */
+#hub-lead-collector-root .hub-collector-callout {
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	background-image: none !important;
+	color: var(--hub-col-text) !important;
+	padding: 8px 14px !important;
+	border-radius: 18px !important;
+	font-size: 12px !important;
+	font-weight: 600 !important;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
+	white-space: nowrap !important;
+	display: flex !important;
+	align-items: center !important;
+	gap: 6px !important;
+	animation: hubFadeIn 0.3s ease-out !important;
+	border: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-callout-close {
+	background: transparent !important;
+	background-color: transparent !important;
+	background-image: none !important;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+	color: var(--hub-col-muted) !important;
+	cursor: pointer !important;
+	font-size: 12px !important;
+	padding: 0 2px !important;
+	margin: 0 !important;
+	line-height: 1 !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: auto !important;
+	min-width: 0 !important;
+	height: auto !important;
+}
+
+#hub-lead-collector-root .hub-collector-callout-close:hover {
+	color: var(--hub-col-text) !important;
+	background: transparent !important;
+}
+
+/* ==========================================================================
+   2. Janela do Chat (Card Flutuante)
+   ========================================================================== */
+#hub-lead-collector-root .hub-collector-window {
+	width: 380px !important;
+	max-width: calc(100vw - 32px) !important;
+	height: 540px !important;
+	max-height: calc(100vh - 100px) !important;
+	background: var(--hub-col-bg) !important;
+	background-color: var(--hub-col-bg) !important;
+	border-radius: 18px !important;
+	box-shadow: 0 12px 38px rgba(0, 0, 0, 0.22) !important;
+	display: flex !important;
+	flex-direction: column !important;
+	overflow: hidden !important;
+	position: absolute !important;
+	bottom: 0 !important;
+	transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+	transform-origin: bottom right !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: none !important;
+}
+
+#hub-lead-collector-root.position-right .hub-collector-window {
+	right: 0 !important;
+	left: auto !important;
+}
+
+#hub-lead-collector-root.position-left .hub-collector-window {
+	left: 0 !important;
+	right: auto !important;
+	transform-origin: bottom left !important;
+}
+
+#hub-lead-collector-root .hub-collector-window.hidden {
+	transform: scale(0.85) translateY(20px) !important;
+	opacity: 0 !important;
+	pointer-events: none !important;
+}
+
+/* ==========================================================================
+   3. Cabeçalho do Chat
+   ========================================================================== */
+#hub-lead-collector-root .hub-collector-header {
+	background-color: var(--hub-col-primary) !important;
+	background-image: none !important;
+	color: #ffffff !important;
+	padding: 14px 16px !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+	flex-shrink: 0 !important;
+	margin: 0 !important;
+	border: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-attendant-info {
+	display: flex !important;
+	align-items: center !important;
+	gap: 12px !important;
+}
+
+#hub-lead-collector-root .hub-collector-avatar-wrap {
+	position: relative !important;
+	width: 44px !important;
+	min-width: 44px !important;
+	max-width: 44px !important;
+	height: 44px !important;
+	min-height: 44px !important;
+	max-height: 44px !important;
+	flex-shrink: 0 !important;
+}
+
+#hub-lead-collector-root .hub-collector-avatar {
+	width: 100% !important;
+	height: 100% !important;
+	border-radius: 50% !important;
+	object-fit: cover !important;
+	background: rgba(255, 255, 255, 0.2) !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+#hub-lead-collector-online-dot,
+#hub-lead-collector-root .hub-collector-online-dot {
+	position: absolute !important;
+	bottom: 1px !important;
+	right: 1px !important;
+	width: 11px !important;
+	height: 11px !important;
+	background-color: var(--hub-col-online) !important;
+	border-radius: 50% !important;
+	border: 2px solid var(--hub-col-primary) !important;
+	box-sizing: content-box !important;
+}
+
+#hub-lead-collector-root .hub-collector-attendant-name {
+	font-size: 15px !important;
+	font-weight: 700 !important;
+	line-height: 1.2 !important;
+	color: #ffffff !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+#hub-lead-collector-root .hub-collector-attendant-role {
+	font-size: 12px !important;
+	color: rgba(255, 255, 255, 0.85) !important;
+	line-height: 1.2 !important;
+	margin-top: 2px !important;
+	margin-bottom: 0 !important;
+	padding: 0 !important;
+}
+
+#hub-lead-collector-root .hub-collector-actions {
+	display: flex !important;
+	align-items: center !important;
+	gap: 6px !important;
+}
+
+#hub-lead-collector-root .hub-collector-btn-ctrl {
+	background: transparent !important;
+	background-color: transparent !important;
+	background-image: none !important;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+	color: rgba(255, 255, 255, 0.85) !important;
+	width: 30px !important;
+	min-width: 30px !important;
+	max-width: 30px !important;
+	height: 30px !important;
+	min-height: 30px !important;
+	max-height: 30px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	border-radius: 50% !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	cursor: pointer !important;
+	font-size: 15px !important;
+	line-height: 1 !important;
+	transition: background-color 0.2s, color 0.2s !important;
+}
+
+#hub-lead-collector-root .hub-collector-btn-ctrl:hover {
+	background: rgba(255, 255, 255, 0.18) !important;
+	background-color: rgba(255, 255, 255, 0.18) !important;
+	color: #ffffff !important;
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-btn-ctrl svg {
+	width: 14px !important;
+	height: 14px !important;
+	stroke: currentColor !important;
+	fill: none !important;
+	pointer-events: none !important;
+	display: block !important;
+}
+
+/* ==========================================================================
+   4. Corpo das Mensagens
+   ========================================================================== */
+#hub-lead-collector-root .hub-collector-body {
+	flex: 1 !important;
+	overflow-y: auto !important;
+	padding: 16px !important;
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 12px !important;
+	background-color: var(--hub-col-bg) !important;
+	scroll-behavior: smooth !important;
+	margin: 0 !important;
+	border: none !important;
+}
+
+/* Custom Scrollbar */
+#hub-lead-collector-root .hub-collector-body::-webkit-scrollbar {
+	width: 5px !important;
+}
+#hub-lead-collector-root .hub-collector-body::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.15) !important;
+	border-radius: 4px !important;
+}
+
+#hub-lead-collector-root .hub-collector-msg-row {
+	display: flex !important;
+	width: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	animation: hubMsgSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@keyframes hubMsgSlide {
+	0% { opacity: 0; transform: translateY(10px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+#hub-lead-collector-root .hub-collector-msg-row.bot {
+	justify-content: flex-start !important;
+}
+
+#hub-lead-collector-root .hub-collector-msg-row.user {
+	justify-content: flex-end !important;
+}
+
+#hub-lead-collector-root .hub-collector-bubble {
+	max-width: 82% !important;
+	padding: 10px 14px !important;
+	font-size: 13.5px !important;
+	line-height: 1.45 !important;
+	position: relative !important;
+	word-break: break-word !important;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.06) !important;
+	margin: 0 !important;
+}
+
+#hub-lead-collector-root .hub-collector-msg-row.bot .hub-collector-bubble {
+	background: var(--hub-col-bot-bubble) !important;
+	background-color: var(--hub-col-bot-bubble) !important;
+	color: var(--hub-col-text) !important;
+	border-radius: 0 14px 14px 14px !important;
+	border: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-msg-row.user .hub-collector-bubble {
+	background: var(--hub-col-user-bubble) !important;
+	background-color: var(--hub-col-user-bubble) !important;
+	color: var(--hub-col-text) !important;
+	border-radius: 14px 0 14px 14px !important;
+	border: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-time {
+	display: inline-block !important;
+	font-size: 10px !important;
+	color: var(--hub-col-muted) !important;
+	margin-left: 8px !important;
+	float: right !important;
+	margin-top: 4px !important;
+}
+
+#hub-lead-collector-root .hub-collector-checks {
+	color: #53bdeb !important;
+	font-size: 11px !important;
+	margin-left: 3px !important;
+}
+
+/* Opções Clicáveis Interativas (Single Choice / Boolean) */
+#hub-lead-collector-root .hub-collector-options-wrap {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	gap: 8px !important;
+	margin-top: 6px !important;
+	padding: 0 !important;
+}
+
+#hub-lead-collector-root .hub-collector-opt-btn {
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	background-image: none !important;
+	border: 1px solid #d1d7db !important;
+	outline: none !important;
+	color: var(--hub-col-primary) !important;
+	font-weight: 600 !important;
+	padding: 8px 16px !important;
+	border-radius: 20px !important;
+	font-size: 13px !important;
+	line-height: 1.3 !important;
+	cursor: pointer !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	gap: 6px !important;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+	transition: all 0.2s ease !important;
+	text-transform: none !important;
+	letter-spacing: normal !important;
+	margin: 0 !important;
+	min-height: 0 !important;
+	max-height: none !important;
+	min-width: 0 !important;
+	max-width: 100% !important;
+}
+
+#hub-lead-collector-root .hub-collector-opt-btn:hover {
+	background: var(--hub-col-primary) !important;
+	background-color: var(--hub-col-primary) !important;
+	color: #ffffff !important;
+	border-color: var(--hub-col-primary) !important;
+	transform: translateY(-1px) !important;
+	box-shadow: 0 3px 8px rgba(0,0,0,0.12) !important;
+}
+
+/* Typing Indicator */
+#hub-lead-collector-root .hub-collector-typing {
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 4px !important;
+	padding: 8px 12px !important;
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	border-radius: 0 14px 14px 14px !important;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.06) !important;
+	width: fit-content !important;
+	border: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-dot {
+	width: 6px !important;
+	height: 6px !important;
+	background: #8696a0 !important;
+	border-radius: 50% !important;
+	animation: hubDotPulse 1.4s infinite ease-in-out both !important;
+}
+
+#hub-lead-collector-root .hub-collector-dot:nth-child(1) { animation-delay: -0.32s !important; }
+#hub-lead-collector-root .hub-collector-dot:nth-child(2) { animation-delay: -0.16s !important; }
+
+@keyframes hubDotPulse {
+	0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+	40% { transform: scale(1); opacity: 1; }
+}
+
+/* ==========================================================================
+   5. Rodapé / Barra de Input
+   ========================================================================== */
+#hub-lead-collector-root .hub-collector-footer {
+	padding: 10px 14px 12px !important;
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	border-top: 1px solid #e9edef !important;
+	flex-shrink: 0 !important;
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 6px !important;
+	margin: 0 !important;
+	border-left: none !important;
+	border-right: none !important;
+	border-bottom: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-input-row {
+	display: flex !important;
+	align-items: center !important;
+	gap: 8px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+#hub-lead-collector-root .hub-collector-input {
+	flex: 1 !important;
+	width: 100% !important;
+	min-width: 0 !important;
+	border: 1px solid #d1d7db !important;
+	border-radius: 22px !important;
+	padding: 9px 16px !important;
+	font-size: 14px !important;
+	outline: none !important;
+	box-shadow: none !important;
+	color: var(--hub-col-text) !important;
+	background: #f0f2f5 !important;
+	background-color: #f0f2f5 !important;
+	background-image: none !important;
+	height: 40px !important;
+	min-height: 40px !important;
+	max-height: 40px !important;
+	line-height: normal !important;
+	margin: 0 !important;
+	transition: border-color 0.2s, background-color 0.2s !important;
+}
+
+#hub-lead-collector-root .hub-collector-input:focus {
+	border-color: var(--hub-col-primary) !important;
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	box-shadow: 0 0 0 1px var(--hub-col-primary) !important;
+}
+
+#hub-lead-collector-root .hub-collector-textarea {
+	border-radius: 14px !important;
+	resize: none !important;
+	height: 48px !important;
+	min-height: 48px !important;
+	max-height: 80px !important;
+	padding: 8px 12px !important;
+	line-height: 1.4 !important;
+}
+
+#hub-lead-collector-root .hub-collector-send-btn {
+	width: 40px !important;
+	min-width: 40px !important;
+	max-width: 40px !important;
+	height: 40px !important;
+	min-height: 40px !important;
+	max-height: 40px !important;
+	border-radius: 50% !important;
+	background: var(--hub-col-primary) !important;
+	background-color: var(--hub-col-primary) !important;
+	background-image: none !important;
+	color: #ffffff !important;
+	border: none !important;
+	outline: none !important;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	cursor: pointer !important;
+	flex-shrink: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	transition: background-color 0.2s, transform 0.15s !important;
+}
+
+#hub-lead-collector-root .hub-collector-send-btn:hover {
+	background: var(--hub-col-primary-dark) !important;
+	background-color: var(--hub-col-primary-dark) !important;
+	transform: scale(1.05) !important;
+	border: none !important;
+	outline: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-send-btn:disabled {
+	opacity: 0.5 !important;
+	cursor: not-allowed !important;
+	transform: none !important;
+}
+
+#hub-lead-collector-root .hub-collector-send-btn svg {
+	width: 18px !important;
+	height: 18px !important;
+	fill: #ffffff !important;
+	margin-left: 2px !important;
+	pointer-events: none !important;
+	display: block !important;
+}
+
+#hub-lead-collector-root .hub-collector-privacy-note {
+	text-align: center !important;
+	font-size: 10px !important;
+	color: var(--hub-col-muted) !important;
+	line-height: 1.2 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+#hub-lead-collector-root .hub-collector-privacy-note a {
+	color: var(--hub-col-muted) !important;
+	text-decoration: underline !important;
+	font-size: 10px !important;
+}
+
+/* ==========================================================================
+   6. Estado Concluído
+   ========================================================================== */
+#hub-lead-collector-root .hub-collector-completed-box {
+	text-align: center !important;
+	padding: 12px !important;
+	font-size: 12px !important;
+	color: #2e7d32 !important;
+	background: #edf7ed !important;
+	background-color: #edf7ed !important;
+	border-radius: 8px !important;
+	font-weight: 500 !important;
+	border: none !important;
+	margin: 0 !important;
+}
+
+/* ==========================================================================
+   7. Responsividade Mobile
+   ========================================================================== */
+@media (max-width: 480px) {
+	#hub-lead-collector-root {
+		bottom: 16px !important;
+	}
+	#hub-lead-collector-root.position-right {
+		right: 16px !important;
+	}
+	#hub-lead-collector-root.position-left {
+		left: 16px !important;
+	}
+
+	#hub-lead-collector-root .hub-collector-window {
+		width: 100vw !important;
+		height: 100dvh !important;
+		max-height: 100dvh !important;
+		max-width: 100vw !important;
+		border-radius: 0 !important;
+		bottom: 0 !important;
+		right: 0 !important;
+		left: 0 !important;
+		position: fixed !important;
+	}
+
+	#hub-lead-collector-root .hub-collector-footer {
+		padding-bottom: max(14px, env(safe-area-inset-bottom)) !important;
+	}
+
+	#hub-lead-collector-root .hub-collector-btn-ctrl {
+		width: 36px !important;
+		min-width: 36px !important;
+		max-width: 36px !important;
+		height: 36px !important;
+		min-height: 36px !important;
+	}
+
+	#hub-lead-collector-root .hub-collector-btn-ctrl svg {
+		width: 20px !important;
+		height: 20px !important;
+	}
+
+	#hub-lead-collector-root .hub-collector-input {
+		font-size: 16px !important; /* Evita zoom automático no iOS */
+	}
+}

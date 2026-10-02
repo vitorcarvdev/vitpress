@@ -1,0 +1,14 @@
+.tmp.drivedownload
+.tmp.driveupload
+*.zip
+*.log
+*.bak
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+*.pem
+*.key
+Thumbs.db
+.DS_Store

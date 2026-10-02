@@ -1,0 +1,77 @@
+.hub-consent-banner {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: #ffffff;
+	box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+	z-index: 999999;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+.hub-consent-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 15px 20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px;
+}
+.hub-consent-text {
+	flex: 1;
+	min-width: 300px;
+	font-size: 14px;
+	color: #333333;
+	line-height: 1.5;
+}
+.hub-consent-text a {
+	color: #2271b1;
+	text-decoration: underline;
+}
+.hub-consent-actions {
+	display: flex;
+	gap: 10px;
+	flex-shrink: 0;
+}
+.hub-btn {
+	padding: 6px 14px !important;
+	border: none !important;
+	border-radius: 4px !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	line-height: 1.2 !important;
+	height: auto !important;
+	min-height: 0 !important;
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+.hub-btn-accept {
+	background: #2271b1 !important;
+	color: #fff !important;
+}
+.hub-btn-accept:hover {
+	background: #135e96 !important;
+}
+.hub-btn-reject {
+	background: #f0f0f1 !important;
+	color: #333 !important;
+	border: 1px solid #c3c4c7 !important;
+}
+.hub-btn-reject:hover {
+	background: #dcdcde !important;
+}
+@media (max-width: 768px) {
+	.hub-consent-container {
+		flex-direction: column;
+		align-items: stretch;
+		text-align: center;
+	}
+	.hub-consent-actions {
+		justify-content: center;
+		width: 100%;
+	}
+	.hub-btn {
+		flex: 1;
+	}
+}
